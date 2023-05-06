@@ -47,6 +47,9 @@ let getWebhook = (req, res) => {
     }
 }
 
+function handleMessage(sender_psid, received_message) {
+
+}
 
 
 module.exports = {
