@@ -28,7 +28,7 @@ let callSendAPI = (sender_psid, response) => {
 }
 
 let handleGetStarted = () => {
-    return Promise(async (resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         try {
             response = { "text": "Xin chào mừng bạn đến với nhà hàng Luffy" }
             await callSendAPI(sender_psid, response)
