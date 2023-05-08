@@ -1,4 +1,3 @@
-import { response, response } from "express";
 import request from "request"
 require('dotenv').config();
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
