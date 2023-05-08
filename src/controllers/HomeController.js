@@ -190,11 +190,53 @@ let setupProfile = async (req, res) => {
 }
 
 
+let setupPersistentMenu = async (req, res) => {
+    //call profile facebook api
+    let request_body = {
+        "persistent_menu": [
+            {
+                "locale": "default",
+                "composer_input_disabled": false,
+                "call_to_actions": [
+                    {
+                        "type": "postback",
+                        "title": "Restart bot",
+                        "payload": "BACK"
+                    },
+                    {
+                        "type": "web_url",
+                        "title": "Trang chủ Facebook",
+                        "url": "https://www.facebook.com/profile.php?id=100092235139972",
+                        "webview_height_ratio": "full"
+                    }
+                ]
+            }
+        ]
+    }
+
+    // Send the HTTP request to the Messenger Platform
+    await request({
+        "uri": `https://graph.facebook.com/v16.0/me/messenger_profile?access_token=${PAGE_ACCESS_TOKEN}`,
+        "qs": { "access_token": PAGE_ACCESS_TOKEN },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        console.log(body)
+        if (!err) {
+            console.log('setup Persistent Menu succeeds!')
+        } else {
+            console.error("Unable to Persistent Menu:" + err);
+        }
+    });
+
+    return res.send("setup Persistent Menu succeeds!")
+}
 
 module.exports = {
     getHomePage: getHomePage,
     postWebhook: postWebhook,
     getWebhook: getWebhook,
-    setupProfile: setupProfile
+    setupProfile: setupProfile,
+    setupPersistentMenu: setupPersistentMenu,
 
 }
