@@ -2,6 +2,9 @@ import request from "request"
 require('dotenv').config();
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 
+
+const image_bd = 'bit.ly/luat-bot1'
+
 let callSendAPI = (sender_psid, response) => {
     // Construct the message body
     let request_body = {
@@ -50,8 +53,15 @@ let handleGetStarted = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
             let username = await getUserName(sender_psid)
-            let response = { "text": `Xin chào mừng ${username} đến với nhà hàng Luffy` }
-            await callSendAPI(sender_psid, response)
+            let response1 = { "text": `Xin chào mừng ${username} đến với nhà hàng Luffy` }
+
+            //send text message
+            await callSendAPI(sender_psid, response1)
+
+            let response2 = sendGetStartedTemplate()
+
+            //send generic template message
+            await callSendAPI(sender_psid, response2)
             resolve('done');
         } catch (e) {
             reject(e)
@@ -59,6 +69,39 @@ let handleGetStarted = (sender_psid) => {
     })
 }
 
+let sendGetStartedTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Nhà hàng Luffy",
+                    "subtitle": "Dưới đây là các nút mà bạn có thể lựa chọn!",
+                    "image_url": image_bd,
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "Menu",
+                            "payload": "Main_menu",
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Đặt bàn",
+                            "payload": "DB"
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Hướng dẫn sử dụng bot",
+                            "payload": "HD",
+                        }
+                    ],
+                }]
+            }
+        }
+    }
+    return response
+}
 
 module.exports = {
     handleGetStarted: handleGetStarted,
