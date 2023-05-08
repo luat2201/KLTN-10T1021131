@@ -4,6 +4,64 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 
 
 const image_bd = 'bit.ly/luat-bot1'
+const image_menu = 'https://img.freepik.com/free-vector/modern-restaurant-menu-fast-food_52683-48982.jpg?w=2000'
+const image_datban = 'https://cdn.tgdd.vn/2021/07/CookProduct/meolon-1200x676.jpg'
+const image_khonggian = 'bit.ly/image_khonggian'
+
+const image_TM = 'bit.ly/image_TM'
+const image_thitbo = 'bit.ly/image_thitbo'
+const image_thitheo = 'https://giadungducsaigon.vn/wp-content/uploads/2021/11/heo-den-iberico-5.png'
+const image_canh = 'bit.ly/image_canh'
+const image_com = 'bit.ly/image_com'
+
+const image_khaivi = 'http://www.nhahangquangon.com/wp-content/uploads/2022/03/thuc-don-tiec1.jpg'
+const image_lau = 'https://cdn.tgdd.vn/2021/06/CookProduct/Lau-cay-tu-xuyen.-1200x675.jpg'
+
+const image_back = 'https://i0.wp.com/sctt.net.vn/wp-content/uploads/2021/08/win11_update_hero_2.jpg'
+
+const image_kv1 = 'https://nhahangvanlocphat.vn/userfiles/files/up(2).jpg'
+const image_kv1_1 = 'https://cdn.tgdd.vn/2020/06/CookRecipe/Avatar/goi-xoai-tom-thit-thumbnail.jpg'
+const image_kv2 = 'https://www.lorca.vn/wp-content/uploads/2022/06/page-header.jpg'
+const image_kv3 = 'https://cdn.tgdd.vn/2021/05/CookProduct/thumbbbbb-1200x676.jpg'
+const image_kv4 = 'https://media.cooky.vn/recipe/g2/18978/s/recipe18978-prepare-step4-636228324332174917.jpg'
+
+const image_bo1 = 'bit.ly/image_bo1'
+const image_bo2 = 'https://www.thucphamsachhd.com/uploads/files/2021/05/19/than-noi-bo-my.jpg'
+const image_bo3 = 'https://foodlife.com.vn/wp-content/uploads/2019/10/rip1.jpg'
+const image_bo4 = 'https://kingbbq.vn/wp-content/uploads/2014/08/fzn_0370_ll1.jpg'
+const image_bo5 = 'https://foodlife.com.vn/wp-content/uploads/2019/10/topblade2.jpg?v=1dff94b87514'
+const image_bo6 = 'https://product.hstatic.net/200000469623/product/bc_cuon_6ee22b9bab9343c18a29ef94428dfbee_master.jpg'
+
+const image_heo1 = 'https://cdn.tgdd.vn/2021/01/CookProduct/thum-1200x676-9.jpg'
+const image_heo2 = 'https://cdn.tgdd.vn/Products/Images/8781/273477/bhx/suon-sun-heo-nhap-khau-1kg-202203021307237461.jpg'
+const image_heo3 = 'https://haisandathanh.com/uploads/image/images/chang-dung-heo.jpg'
+const image_heo4 = 'https://thitheonong.com/thumbs/1280x857x2/upload/baiviet/cach-lam-thit-heo-boc-sa-chien-gion-thom-ngon-khong-cuong-noi1-4778.jpg'
+const image_heo5 = 'https://i.ytimg.com/vi/Q5V0uEkdTPg/maxresdefault.jpg'
+
+const image_canh1 = 'https://upload.wikimedia.org/wikipedia/commons/4/4c/Korean_stew-Kimchi_jjigae-01.jpg'
+const image_canh2 = 'https://trivietphat.net/wp-content/uploads/2021/08/canh-kim-chi-thit-bo-1.jpg'
+const image_canh3 = 'https://cookbeo.com/media/2020/06/724834785/canh-rong-bien-4x3.jpg'
+const image_canh4 = 'https://cdn.tgdd.vn/2020/12/CookRecipe/Avatar/canh-rong-bien-thit-bo-dau-hu-thumbnail-1.jpg'
+const image_canh5 = 'https://cdn.tgdd.vn/2021/05/CookProduct/thum-1200x676-13.jpg'
+
+const image_com1 = 'https://amthuchailuaq3.com/upload/product/603005460842.jpg'
+const image_com2 = 'http://bit.ly/cachuon1'
+const image_com3 = 'https://www.rongbienhanquoc.net/Upload/601657513735.webp'
+const image_com4 = 'https://bloganchoi.com/wp-content/uploads/2016/10/com-lam-dac-san-binh-phuoc-02-1024x768.jpg'
+
+const image_tm1 = 'https://dvpmarket.com/resources/uploads/images/2018/04/Banh-chocolate-ganache-sanh-min-hap-dan.jpg'
+const image_tm2 = 'https://cdn.tgdd.vn/2021/03/CookRecipe/Avatar/banh-pho-mai-nuong-dua-thumbnail.jpg'
+const image_tm3 = 'https://cdn.tgdd.vn/2021/03/CookProduct/thumb1-1200x676-18.jpg'
+const image_tm4 = 'https://cdn.tgdd.vn/2021/04/CookProduct/pug1-1200x676.jpg'
+const image_tm5 = 'https://cdn.tgdd.vn/2020/08/CookProduct/Webp.net-resizeimage(28)-1200x676.jpg'
+const image_tm6 = 'https://mevacon.giaoduc.edu.vn/wp-content/uploads/2021/10/cach-lam-banh-pie-tao-4.jpg'
+const image_tm7 = 'https://cdn.tgdd.vn/2020/12/CookProduct/cach-lam-banh-kem-dau-tay1200-1200x676.jpg'
+
+const image_lau1 = 'https://cookbeo.com/media/2020/09/lau-thai-thap-cam/lau-thai-thap-cam.jpg'
+const image_lau2 = 'http://cdn.tgdd.vn/Files/2021/02/25/1330480/tong-hop-5-cach-nau-lau-hai-san-thom-ngon-tai-nha-202206031654454333.jpg'
+const image_lau3 = 'https://sieungon.com/wp-content/uploads/2017/11/mon-lau-ga-la-giang-1.jpg'
+
+const image_rooms = 'https://media.cntraveler.com/photos/5a60e3ff2630ac19f54baf1f/16:9/w_2560,c_limit/Farmshop_2018FarmshopLA_0535---Dining-Room-no-Kitchen.jpg'
 
 let callSendAPI = (sender_psid, response) => {
     // Construct the message body
@@ -58,7 +116,7 @@ let handleGetStarted = (sender_psid) => {
             //send text message
             await callSendAPI(sender_psid, response1)
 
-            let response2 = sendGetStartedTemplate()
+            let response2 = getStartedTemplate()
 
             //send generic template message
             await callSendAPI(sender_psid, response2)
@@ -69,7 +127,7 @@ let handleGetStarted = (sender_psid) => {
     })
 }
 
-let sendGetStartedTemplate = () => {
+let getStartedTemplate = () => {
     let response = {
         "attachment": {
             "type": "template",
@@ -103,7 +161,74 @@ let sendGetStartedTemplate = () => {
     return response
 }
 
+let handleSendMainMenu = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response1 = getMainMenuTemplate()
+            await callSendAPI(sender_psid, response1)
+            resolve('done');
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+let getMainMenuTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Menu của nhà hàng",
+                        "subtitle": "Thực đơn cho bữa trưa và bữa tối.",
+                        "image_url": image_menu,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Bữa trưa",
+                                "payload": "LUNCH_MENU",
+                            },
+                            {
+                                "type": "postback",
+                                "title": "Bữa tối",
+                                "payload": "DINNER_MENU",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Giờ mở cửa",
+                        "subtitle": "Thứ 2 - Thứ 6: 12h-22h | Thứ 7 - Chủ nhật: 10h-23h",
+                        "image_url": image_datban,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Đặt bàn",
+                                "payload": "DB"
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Không gian nhà hàng",
+                        "subtitle": "Nhà hàng có sức chứa lên đến 500 người và có thể phục vụ trong các tiệc lớn như đám cưới, sinh nhật, liên hoan,....",
+                        "image_url": image_khonggian,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Chi tiết",
+                                "payload": "SHOW_ROOMS",
+                            }
+                        ],
+                    }
+                ]
+            }
+        }
+    }
+    return response
+}
+
 module.exports = {
     handleGetStarted: handleGetStarted,
-
+    handleSendMainMenu: handleSendMainMenu,
 }

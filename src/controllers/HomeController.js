@@ -134,6 +134,11 @@ async function handlePostback(sender_psid, received_postback) {
         case 'GET_STARTED':
             await chatbotService.handleGetStarted(sender_psid)
             break;
+
+        case 'Main_menu':
+            await chatbotService.handleSendMainMenu(sender_psid)
+            break;
+
         default:
             response = { "text": `Tôi không yêu cầu ${payload} của bạn` }
     }
