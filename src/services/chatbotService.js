@@ -44,7 +44,7 @@ let getUserName = (sender_psid) => {
     })
 }
 
-let handleGetStarted = () => {
+let handleGetStarted = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
             let username = await getUserName(sender_psid)
