@@ -145,6 +145,30 @@ async function handlePostback(sender_psid, received_postback) {
         case 'DINNER_MENU':
             await chatbotService.handlleSendDinnerMenu(sender_psid)
             break
+        case 'KV':
+            await chatbotService.handleViewKV(sender_psid)
+            break;
+        case 'TBM':
+            await chatbotService.handleViewTBM(sender_psid)
+            break;
+        case 'THTBN':
+            await chatbotService.handleViewTHTBN(sender_psid)
+            break;
+        case 'CANH':
+            await chatbotService.handleViewCANH(sender_psid)
+            break;
+        case 'COM':
+            await chatbotService.handleViewCOM(sender_psid)
+            break;
+        case 'LAU':
+            await chatbotService.handleViewLAU(sender_psid)
+            break
+        case 'Mon_TM':
+            await chatbotService.handleViewMon_TM(sender_psid)
+            break
+        case 'BACK':
+            await chatbotService.handleBackToMainMenu(sender_psid)
+            break;
 
         default:
             response = { "text": `Tôi không yêu cầu ${payload} của bạn` }

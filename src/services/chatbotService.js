@@ -339,7 +339,7 @@ let getLunchMenuTemplate = () => {
                         "buttons": [
                             {
                                 "type": "postback",
-                                "title": "Quay trở lại",
+                                "title": "Quay trở lại Menu chính",
                                 "payload": "BACK",
                             }
                         ],
@@ -462,7 +462,7 @@ let getDinnerMenuTemplate = () => {
                         "buttons": [
                             {
                                 "type": "postback",
-                                "title": "Quay trở lại",
+                                "title": "Quay trở lại Menu chính",
                                 "payload": "BACK",
                             }
                         ],
@@ -475,9 +475,491 @@ let getDinnerMenuTemplate = () => {
     return response
 }
 
+let handleBackToMainMenu = async (sender_psid) => {
+    await handleSendMainMenu(sender_psid)
+}
+
+let handleViewKV = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            let response = gethandleViewKV(sender_psid)
+            await callSendAPI(sender_psid, response)
+
+
+            resolve('done')
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+let gethandleViewKV = (senderID) => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements":
+                    [
+                        {
+                            "title": "Gỏi thịt thăn",
+                            "subtitle": "Giá 150k",
+                            "image_url": image_kv1,
+                        },
+                        {
+                            "title": "Gỏi tôm thịt",
+                            "subtitle": "Giá 150k",
+                            "image_url": image_kv1_1,
+                        },
+                        {
+                            "title": "Kim chi",
+                            "subtitle": "Kim chi Hàn Quốc: 38k",
+                            "image_url": image_kv2,
+                        },
+                        {
+                            "title": "Panchan dưa leo",
+                            "subtitle": "Giá 38k",
+                            "image_url": image_kv3,
+                        },
+                        {
+                            "title": "Salad tôm",
+                            "subtitle": "Giá 100k",
+                            "image_url": image_kv4,
+                        },
+                        {
+                            "title": "Back",
+                            "subtitle": "Quay trở lại Menu chính",
+                            "image_url": image_back,
+                            "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "Quay trở lại Menu chính",
+                                    "payload": "BACK",
+                                }
+                            ],
+                        }
+                    ]
+            }
+        }
+    }
+    return response
+}
+
+let handleViewTBM = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            let response = gethandleViewTBM(sender_psid)
+            await callSendAPI(sender_psid, response)
+
+
+            resolve('done')
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+
+let gethandleViewTBM = (senderID) => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements":
+                    [
+                        {
+                            "title": "Thăn ngoại bò Mỹ nướng",
+                            "subtitle": "Giá 118k",
+                            "image_url": image_bo1,
+                        },
+                        {
+                            "title": "Thăn nội bò Mỹ nướng",
+                            "subtitle": "Giá 118k",
+                            "image_url": image_bo2,
+                        },
+                        {
+                            "title": "Thịt dẻ sườn bò Mỹ nướng",
+                            "subtitle": "Giá 118k",
+                            "image_url": image_bo3,
+                        },
+                        {
+                            "title": "Bò ba chỉ cuốn nấm nướng",
+                            "subtitle": "Giá 118k",
+                            "image_url": image_bo4,
+                        },
+                        {
+                            "title": "Lõi nạc vai bò nướng",
+                            "subtitle": "Giá 118k",
+                            "image_url": image_bo5,
+                        },
+                        {
+                            "title": "Ba chỉ bò Mỹ nướng",
+                            "subtitle": "Giá 108k",
+                            "image_url": image_bo6,
+                        },
+                        {
+                            "title": "Back",
+                            "subtitle": "Quay trở lại Menu chính",
+                            "image_url": image_back,
+                            "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "Quay trở lại Menu chính",
+                                    "payload": "BACK",
+                                }
+                            ],
+                        }
+                    ]
+            }
+        }
+    }
+    return response
+}
+
+let handleViewTHTBN = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            let response = gethandleViewTHTBN(sender_psid)
+            await callSendAPI(sender_psid, response)
+
+
+            resolve('done')
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+let gethandleViewTHTBN = (senderID) => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements":
+                    [
+                        {
+                            "title": "Ba chỉ heo nướng",
+                            "subtitle": "Giá 89k",
+                            "image_url": image_heo1,
+                        },
+                        {
+                            "title": "Sụn heo nướng",
+                            "subtitle": "Giá 89k",
+                            "image_url": image_heo2,
+                        },
+                        {
+                            "title": "Diềm heo nướng",
+                            "subtitle": "Giá 89k ",
+                            "image_url": image_heo3,
+                        },
+                        {
+                            "title": "Thịt heo bọc xã chiên giòn",
+                            "subtitle": "Giá 100k",
+                            "image_url": image_heo4,
+                        },
+                        {
+                            "title": "Thịt kho tàu",
+                            "subtitle": "Giá 80k",
+                            "image_url": image_heo5,
+                        },
+                        {
+                            "title": "Back",
+                            "subtitle": "Quay trở lại Menu chính",
+                            "image_url": image_back,
+                            "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "Quay trở lại Menu chính",
+                                    "payload": "BACK",
+                                }
+                            ],
+                        }
+                    ]
+            }
+        }
+    }
+    return response
+}
+
+let handleViewCANH = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            let response = gethandleViewCANH(sender_psid)
+            await callSendAPI(sender_psid, response)
+
+
+            resolve('done')
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+let gethandleViewCANH = (senderID) => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements":
+                    [
+                        {
+                            "title": "Canh kim chi thường",
+                            "subtitle": "Giá 58k",
+                            "image_url": image_canh1,
+                        },
+                        {
+                            "title": "Canh kim chi bò",
+                            "subtitle": "Giá 68k",
+                            "image_url": image_canh2,
+                        },
+                        {
+                            "title": "Canh rong biển truyền thống",
+                            "subtitle": "Giá 58k ",
+                            "image_url": image_canh3,
+                        },
+                        {
+                            "title": "Canh rong biển bò",
+                            "subtitle": "Giá 68k",
+                            "image_url": image_canh4,
+                        },
+                        {
+                            "title": "Canh rong biển hải sản",
+                            "subtitle": "Giá 68k",
+                            "image_url": image_canh5,
+                        },
+                        {
+                            "title": "Back",
+                            "subtitle": "Quay trở lại Menu chính",
+                            "image_url": image_back,
+                            "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "Quay trở lại Menu chính",
+                                    "payload": "BACK",
+                                }
+                            ],
+                        }
+                    ]
+            }
+        }
+    }
+    return response
+}
+
+let handleViewCOM = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            let response = gethandleViewCOM(sender_psid)
+            await callSendAPI(sender_psid, response)
+
+
+            resolve('done')
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+let gethandleViewCOM = (senderID) => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements":
+                    [
+                        {
+                            "title": "Cơm chiên hải sản",
+                            "subtitle": "Giá 68k",
+                            "image_url": image_com1,
+                        },
+                        {
+                            "title": "Cơm chiên trứng cá chuồn",
+                            "subtitle": "Giá 68k",
+                            "image_url": image_com2,
+                        },
+                        {
+                            "title": "Cơm cuộn truyền thống",
+                            "subtitle": "Giá 38k ",
+                            "image_url": image_com3,
+                        },
+                        {
+                            "title": "Cơm lam",
+                            "subtitle": "Giá 50k",
+                            "image_url": image_com4,
+                        },
+                        {
+                            "title": "Back",
+                            "subtitle": "Quay trở lại Menu chính",
+                            "image_url": image_back,
+                            "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "Quay trở lại Menu chính",
+                                    "payload": "BACK",
+                                }
+                            ],
+                        }
+                    ]
+            }
+        }
+    }
+    return response
+}
+
+let handleViewLAU = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            let response = gethandleViewLAU(sender_psid)
+            await callSendAPI(sender_psid, response)
+
+
+            resolve('done')
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+let gethandleViewLAU = (senderID) => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements":
+                    [
+                        {
+                            "title": "Lẫu Thái",
+                            "subtitle": "Giá 299k",
+                            "image_url": image_lau1,
+                        },
+                        {
+                            "title": "Lẫu hải sản",
+                            "subtitle": "Giá 299k",
+                            "image_url": image_lau2,
+                        },
+                        {
+                            "title": "Lẫu gà lá giang",
+                            "subtitle": "Giá 350k",
+                            "image_url": image_lau3,
+                        },
+                        {
+                            "title": "Back",
+                            "subtitle": "Quay trở lại Menu chính",
+                            "image_url": image_back,
+                            "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "Quay trở lại Menu chính",
+                                    "payload": "BACK",
+                                }
+                            ],
+                        }
+                    ]
+            }
+        }
+    }
+    return response
+}
+
+let handleViewMon_TM = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            let response = gethandleViewMon_TM(sender_psid)
+            await callSendAPI(sender_psid, response)
+
+
+            resolve('done')
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+let gethandleViewMon_TM = (senderID) => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements":
+                    [
+                        {
+                            "title": "Bánh kem socola",
+                            "subtitle": "Giá 50k",
+                            "image_url": image_tm1,
+                        },
+                        {
+                            "title": "Bánh phô mai",
+                            "subtitle": "Giá 50k",
+                            "image_url": image_tm2,
+                        },
+                        {
+                            "title": "Bánh trứng phồng",
+                            "subtitle": "Giá 50k ",
+                            "image_url": image_tm3,
+                        },
+                        {
+                            "title": "Bánh mềm pudding",
+                            "subtitle": "Giá 50k",
+                            "image_url": image_tm4,
+                        },
+                        {
+                            "title": "Bánh tart chanh",
+                            "subtitle": "Giá 50k",
+                            "image_url": image_tm5,
+                        },
+                        {
+                            "title": "Bánh nướng táo",
+                            "subtitle": "Giá 50k",
+                            "image_url": image_tm6,
+                        },
+                        {
+                            "title": "Bánh kem dâu",
+                            "subtitle": "Giá 50k",
+                            "image_url": image_tm7,
+                        },
+                        {
+                            "title": "Back",
+                            "subtitle": "Quay trở lại Menu chính",
+                            "image_url": image_back,
+                            "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "Quay trở lại Menu chính",
+                                    "payload": "BACK",
+                                }
+                            ],
+                        }
+                    ]
+            }
+        }
+    }
+    return response
+}
+
 module.exports = {
     handleGetStarted: handleGetStarted,
     handleSendMainMenu: handleSendMainMenu,
     handleSendLunchMenu: handleSendLunchMenu,
     handlleSendDinnerMenu: handlleSendDinnerMenu,
+    handleBackToMainMenu: handleBackToMainMenu,
+    handleViewKV: handleViewKV,
+    handleViewTBM: handleViewTBM,
+    handleViewTHTBN: handleViewTHTBN,
+    handleViewCANH: handleViewCANH,
+    handleViewCOM: handleViewCOM,
+    handleViewLAU: handleViewLAU,
+    handleViewMon_TM: handleViewMon_TM,
 }
