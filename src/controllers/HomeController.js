@@ -169,6 +169,9 @@ async function handlePostback(sender_psid, received_postback) {
         case 'BACK':
             await chatbotService.handleBackToMainMenu(sender_psid)
             break;
+        case 'SHOW_ROOMS':
+            await chatbotService.handleShowDetailRooms(sender_psid)
+            break
 
         default:
             response = { "text": `Tôi không yêu cầu ${payload} của bạn` }

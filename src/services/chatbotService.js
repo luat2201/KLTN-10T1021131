@@ -998,6 +998,63 @@ let gethandleViewMon_TM = (senderID) => {
     return response
 }
 
+let getImageRoomsTemplates = () => {
+    let response = {
+        "attachment": {
+            "type": "image",
+            "payload": {
+                "url": image_rooms,
+                "is_reusable": true
+            }
+        }
+    }
+    return response
+}
+
+let getButtonRoomsTemplates = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "button",
+                "text": "Nhà hàng có thể phục vụ tối đa 500 khách",
+                "buttons": [
+                    {
+                        "type": "postback",
+                        "title": "Menu",
+                        "payload": "Main_menu",
+                    },
+                    {
+                        "type": "postback",
+                        "title": "Đặt bàn",
+                        "payload": "DB"
+                    }
+                ]
+            }
+        }
+    }
+    return response
+}
+
+let handleShowDetailRooms = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            //send an image
+            let response1 = getImageRoomsTemplates(sender_psid)
+
+            //send a button templates: text, button
+            let response2 = getButtonRoomsTemplates(sender_psid)
+
+            await callSendAPI(sender_psid, response1)
+            await callSendAPI(sender_psid, response2)
+
+            resolve('done')
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
 module.exports = {
     handleGetStarted: handleGetStarted,
     handleSendMainMenu: handleSendMainMenu,
@@ -1011,4 +1068,5 @@ module.exports = {
     handleViewCOM: handleViewCOM,
     handleViewLAU: handleViewLAU,
     handleViewMon_TM: handleViewMon_TM,
+    handleShowDetailRooms: handleShowDetailRooms,
 }
