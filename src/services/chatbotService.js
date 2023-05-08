@@ -63,7 +63,7 @@ const image_lau3 = 'https://sieungon.com/wp-content/uploads/2017/11/mon-lau-ga-l
 
 const image_rooms = 'https://media.cntraveler.com/photos/5a60e3ff2630ac19f54baf1f/16:9/w_2560,c_limit/Farmshop_2018FarmshopLA_0535---Dining-Room-no-Kitchen.jpg'
 
-let callSendAPI = (sender_psid, response) => {
+let callSendAPI = async (sender_psid, response) => {
     // Construct the message body
     let request_body = {
         "recipient": {
@@ -71,6 +71,9 @@ let callSendAPI = (sender_psid, response) => {
         },
         "message": response
     }
+
+    await sendMarkSeen(sender_psid)
+    await sendTypingOn(sender_psid)
 
     // Send the HTTP request to the Messenger Platform
     request({
@@ -83,6 +86,52 @@ let callSendAPI = (sender_psid, response) => {
             console.log('message sent!')
         } else {
             console.error("Unable to send message:" + err);
+        }
+    });
+}
+
+let sendTypingOn = (sender_psid) => {
+    let request_body = {
+        "recipient": {
+            "id": sender_psid
+        },
+        "sender_action": "typing_on"
+    }
+
+    // Send the HTTP request to the Messenger Platform
+    request({
+        "uri": "https://graph.facebook.com/v16.0/me/messages",
+        "qs": { "access_token": PAGE_ACCESS_TOKEN },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        if (!err) {
+            console.log('sendTypingOn sent!')
+        } else {
+            console.error("Unable to send sendTypingOn:" + err);
+        }
+    });
+}
+
+let sendMarkSeen = (sender_psid) => {
+    let request_body = {
+        "recipient": {
+            "id": sender_psid
+        },
+        "sender_action": "mark_seen"
+    }
+
+    // Send the HTTP request to the Messenger Platform
+    request({
+        "uri": "https://graph.facebook.com/v16.0/me/messages",
+        "qs": { "access_token": PAGE_ACCESS_TOKEN },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        if (!err) {
+            console.log('sendTypingOn sent!')
+        } else {
+            console.error("Unable to send sendTypingOn:" + err);
         }
     });
 }
