@@ -1072,4 +1072,5 @@ module.exports = {
     handleViewLAU: handleViewLAU,
     handleViewMon_TM: handleViewMon_TM,
     handleShowDetailRooms: handleShowDetailRooms,
+    callSendAPI: callSendAPI,
 }

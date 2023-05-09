@@ -278,6 +278,48 @@ let handleReserveTable = (req, res) => {
     return res.render('reserve-table.ejs')
 }
 
+let handlePostReserveTable = async (req, res) => {
+    try {
+        let username = await chatbotService.getUserName(req.body.psid);
+
+        let data = {
+            username: username,
+            email: req.body.email,
+            phoneNumber: `'${req.body.phoneNumber}`,
+            customerName: req.body.customerName,
+            dateDB: req.body.dateDB,
+            hourDB: req.body.hourDB,
+            manyPeople: req.body.manyPeople
+
+        }
+        await writeDataToGoogleSheet(data)
+
+        let customerName = "";
+        if (req.body.customerName === "") {
+            customerName = username
+        } else customerName = req.body.customerName;
+        let response1 = {
+            "text": `---Thông tin khách hàng---
+            \nHọ và tên: ${customerName}
+            \nĐịa chỉ Email: ${req.body.email}
+            \nSố điện thoại: ${req.body.phoneNumber}
+            \nNgày đặt bàn: ${req.body.dateDB}
+            \nGiờ đặt bàn: ${req.body.hourDB}
+            \nSố người: ${req.body.manyPeople}
+            `
+        }
+        await chatbotService.callSendAPI(req.body.psid, response1)
+        return res.status(200).json({
+            message: "ok"
+        });
+    } catch (e) {
+        console.log('Lỗi post reserve table: ', e)
+        return res.status(500).json({
+            message: "Server error"
+        });
+    }
+}
+
 module.exports = {
     getHomePage: getHomePage,
     postWebhook: postWebhook,
@@ -285,4 +327,5 @@ module.exports = {
     setupProfile: setupProfile,
     setupPersistentMenu: setupPersistentMenu,
     handleReserveTable: handleReserveTable,
+    handlePostReserveTable: handlePostReserveTable
 }
