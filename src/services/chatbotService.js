@@ -161,9 +161,9 @@ let handleGetStarted = (sender_psid) => {
         try {
             let username = await getUserName(sender_psid)
             let response1 = { "text": `Xin chào mừng ${username} đến với nhà hàng Luffy` }
-            let response2 = getStartedTemplate()
             //send text message
             await callSendAPI(sender_psid, response1)
+            let response2 = getStartedTemplate()
             //send generic template message
             await callSendAPI(sender_psid, response2)
             resolve('done');
