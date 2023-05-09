@@ -2,6 +2,7 @@ require('dotenv').config();
 import request from "request";
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 import chatbotService from "../services/chatbotService"
+import { response } from "express";
 //process.env.NAME_VARIABLES
 let getHomePage = (req, res) => {
     return res.render('homepage.ejs');
@@ -273,11 +274,15 @@ let setupPersistentMenu = async (req, res) => {
     return res.send("setup Persistent Menu succeeds!")
 }
 
+let handleReserveTable = (req, res) => {
+    return res.render('reserve-table.ejs')
+}
+
 module.exports = {
     getHomePage: getHomePage,
     postWebhook: postWebhook,
     getWebhook: getWebhook,
     setupProfile: setupProfile,
     setupPersistentMenu: setupPersistentMenu,
-
+    handleReserveTable: handleReserveTable,
 }

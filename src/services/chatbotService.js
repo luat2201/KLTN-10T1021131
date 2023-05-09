@@ -193,9 +193,11 @@ let getStartedTemplate = () => {
                             "payload": "Main_menu",
                         },
                         {
-                            "type": "postback",
+                            "type": "web_url",
+                            "url": `${process.env.URL_WEB_VIEW_ORDER}`,
                             "title": "Đặt bàn",
-                            "payload": "DB"
+                            "webview_hight_ratio": "tall",
+                            "messenger_extensions": true
                         },
                         {
                             "type": "postback",
@@ -252,9 +254,11 @@ let getMainMenuTemplate = () => {
                         "image_url": image_datban,
                         "buttons": [
                             {
-                                "type": "postback",
+                                "type": "web_url",
+                                "url": `${process.env.URL_WEB_VIEW_ORDER}`,
                                 "title": "Đặt bàn",
-                                "payload": "DB"
+                                "webview_hight_ratio": "tall",
+                                "messenger_extensions": true
                             }
                         ],
                     },
@@ -1025,9 +1029,11 @@ let getButtonRoomsTemplates = () => {
                         "payload": "Main_menu",
                     },
                     {
-                        "type": "postback",
+                        "type": "web_url",
+                        "url": `${process.env.URL_WEB_VIEW_ORDER}`,
                         "title": "Đặt bàn",
-                        "payload": "DB"
+                        "webview_hight_ratio": "tall",
+                        "messenger_extensions": true
                     }
                 ]
             }
