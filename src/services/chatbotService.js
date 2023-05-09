@@ -63,31 +63,36 @@ const image_lau3 = 'https://sieungon.com/wp-content/uploads/2017/11/mon-lau-ga-l
 
 const image_rooms = 'https://media.cntraveler.com/photos/5a60e3ff2630ac19f54baf1f/16:9/w_2560,c_limit/Farmshop_2018FarmshopLA_0535---Dining-Room-no-Kitchen.jpg'
 
-let callSendAPI = async (sender_psid, response) => {
-    // Construct the message body
-    let request_body = {
-        "recipient": {
-            "id": sender_psid
-        },
-        "message": response
-    }
+let callSendAPI = (sender_psid, response) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let request_body = {
+                "recipient": {
+                    "id": sender_psid
+                },
+                "message": response
+            }
 
-    await sendMarkSeen(sender_psid)
-    await sendTypingOn(sender_psid)
+            await sendMarkSeen(sender_psid)
+            await sendTypingOn(sender_psid)
 
-    // Send the HTTP request to the Messenger Platform
-    request({
-        "uri": "https://graph.facebook.com/v16.0/me/messages",
-        "qs": { "access_token": PAGE_ACCESS_TOKEN },
-        "method": "POST",
-        "json": request_body
-    }, (err, res, body) => {
-        if (!err) {
-            console.log('message sent!')
-        } else {
-            console.error("Unable to send message:" + err);
+            // Send the HTTP request to the Messenger Platform
+            request({
+                "uri": "https://graph.facebook.com/v16.0/me/messages",
+                "qs": { "access_token": PAGE_ACCESS_TOKEN },
+                "method": "POST",
+                "json": request_body
+            }, (err, res, body) => {
+                if (!err) {
+                    resolve('message sent!')
+                } else {
+                    console.error("Unable to send message:" + err);
+                }
+            });
+        } catch (e) {
+            reject(e)
         }
-    });
+    })
 }
 
 let sendTypingOn = (sender_psid) => {
@@ -166,6 +171,9 @@ let handleGetStarted = (sender_psid) => {
             let response2 = getStartedTemplate()
             //send generic template message
             await callSendAPI(sender_psid, response2)
+
+            // let response3 = getStartedQuickReplyTemplate()
+            // await callSendAPI(sender_psid, response3)
             resolve('done');
         } catch (e) {
             reject(e)
@@ -208,6 +216,7 @@ let getStartedTemplate = () => {
     }
     return response
 }
+
 
 let handleSendMainMenu = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
