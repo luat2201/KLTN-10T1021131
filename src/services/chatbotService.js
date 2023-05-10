@@ -1100,7 +1100,7 @@ let getBotMediaTemplate = () => {
                         "buttons": [
                             {
                                 "type": "postback",
-                                "title": "Menu",
+                                "title": "Menu chính",
                                 "payload": "Main_menu",
                             }
                         ]
