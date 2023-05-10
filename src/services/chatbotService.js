@@ -1,5 +1,6 @@
 import request from "request"
 require('dotenv').config();
+import db from '../models/index'
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 
 
@@ -62,6 +63,8 @@ const image_lau2 = 'http://cdn.tgdd.vn/Files/2021/02/25/1330480/tong-hop-5-cach-
 const image_lau3 = 'https://sieungon.com/wp-content/uploads/2017/11/mon-lau-ga-la-giang-1.jpg'
 
 const image_rooms = 'https://media.cntraveler.com/photos/5a60e3ff2630ac19f54baf1f/16:9/w_2560,c_limit/Farmshop_2018FarmshopLA_0535---Dining-Room-no-Kitchen.jpg'
+
+
 
 let callSendAPI = (sender_psid, response) => {
     return new Promise(async (resolve, reject) => {
@@ -300,114 +303,66 @@ let handleSendLunchMenu = (sender_psid) => {
 }
 
 
-let getLunchMenuTemplate = () => {
+let getLunchMenuTemplate = async () => {
+
+    let data = await db.Product.findAll({
+        raw: true
+    })
+
+    let elements = [];
+    if (data && data.length > 0) {
+        data.map(item => {
+            elements.push({
+                "title": item.title,
+                "subtitle": item.subtitle,
+                "image_url": item.image_url,
+                "buttons": [
+                    {
+                        "type": "postback",
+                        "title": "Xem chi tiết",
+                        "payload": item.payload,
+                    }
+                ],
+            })
+        })
+    }
+
+
+    elements.push({
+        "title": "Back",
+        "subtitle": "Quay trở lại Menu chính",
+        "image_url": image_back,
+        "buttons": [
+            {
+                "type": "postback",
+                "title": "Quay trở lại Menu chính",
+                "payload": "BACK",
+            },
+            {
+                "type": "web_url",
+                "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                "title": "Đặt bàn",
+                "webview_height_ratio": "tall",
+                "messenger_extensions": true
+            }
+        ],
+    })
+
+
     let response = {
         "attachment": {
             "type": "template",
             "payload": {
                 "template_type": "generic",
-                "elements": [
-                    {
-                        "title": "Món khai vị",
-                        "subtitle": "Các món khai vị, salad và kim chi",
-                        "image_url": image_khaivi,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "Xem chi tiết",
-                                "payload": "KV",
-                            }
-                        ],
-                    },
-                    {
-                        "title": "Thịt bò Mỹ",
-                        "subtitle": "Là loại bò Black Angus, một trong những giống bò nổi tiếng nhất ở Mỹ",
-                        "image_url": image_thitbo,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "Xem chi tiết",
-                                "payload": "TBM",
-                            }
-                        ],
-                    },
-                    {
-                        "title": "Thịt heo Tây Ban Nha",
-                        "subtitle": "Heo Iberico là một loại heo có nguồn gốc từ bán đảo Iberia Tây Ban Nha. Heo được chăn nuôi trong môi trường yêu cầu nghiêm ngặt về tất cả điều kiện chăm sóc và quy trình phân phối",
-                        "image_url": image_thitheo,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "Xem chi tiết",
-                                "payload": "THTBN",
-                            }
-                        ],
-                    },
-                    {
-                        "title": "Cơm",
-                        "image_url": image_com,
-                        "subtitle": "Có nhiều loại cơm để thưởng thức",
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "Xem chi tiết",
-                                "payload": "COM",
-                            }
-                        ],
-                    },
-                    {
-                        "title": "Lẩu",
-                        "image_url": image_lau,
-                        "subtitle": "Các món lẫu đặc biệt gắn kết tình cảm gia đình",
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "Xem chi tiết",
-                                "payload": "LAU",
-                            }
-                        ],
-                    },
-                    {
-                        "title": "Canh",
-                        "image_url": image_canh,
-                        "subtitle": "Có nhiều loại canh Hàn Quốc",
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "Xem chi tiết",
-                                "payload": "CANH",
-                            }
-                        ],
-                    },
-                    {
-                        "title": "Món tráng miệng",
-                        "subtitle": "Các món tráng miệng đặc biệt chỉ có ở nhà hàng Mitsuki",
-                        "image_url": image_TM,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "Xem chi tiết",
-                                "payload": "Mon_TM",
-                            }
-                        ],
-                    },
-                    {
-                        "title": "Back",
-                        "subtitle": "Quay trở lại Menu chính",
-                        "image_url": image_back,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "Quay trở lại Menu chính",
-                                "payload": "BACK",
-                            }
-                        ],
-                    }
-
-                ]
+                "elements": []
             }
         }
     }
+
+    response.attachment.payload.elements = elements
+    console.log('>>check response: ', response.attachment.payload.elements)
+
+
     return response
 }
 
@@ -1127,5 +1082,6 @@ module.exports = {
     handleViewMon_TM: handleViewMon_TM,
     handleShowDetailRooms: handleShowDetailRooms,
     callSendAPI: callSendAPI,
-    handleHD: handleHD
+    handleHD: handleHD,
+    getLunchMenuTemplate: getLunchMenuTemplate,
 }
