@@ -86,6 +86,9 @@ let callSendAPI = (sender_psid, response) => {
                 "method": "POST",
                 "json": request_body
             }, (err, res, body) => {
+                console.log("--------------------")
+                console.log(body)
+                console.log("--------------------")
                 if (!err) {
                     resolve('message sent!')
                 } else {
@@ -293,7 +296,7 @@ let getMainMenuTemplate = () => {
 let handleSendLunchMenu = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let response1 = getLunchMenuTemplate()
+            let response1 = await getLunchMenuTemplate()
             await callSendAPI(sender_psid, response1)
             resolve('done');
         } catch (e) {
@@ -360,8 +363,6 @@ let getLunchMenuTemplate = async () => {
     }
 
     response.attachment.payload.elements = elements
-    console.log('>>check response: ', response.attachment.payload.elements)
-
 
     return response
 }
