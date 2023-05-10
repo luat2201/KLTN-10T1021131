@@ -173,11 +173,12 @@ async function handlePostback(sender_psid, received_postback) {
             response = { "text": "Oops, try sending another image." }
             break;
 
-        case 'BACK':
+
         case 'GET_STARTED':
             await chatbotService.handleGetStarted(sender_psid)
             break;
 
+        case 'BACK':
         case 'Main_menu':
             await chatbotService.handleSendMainMenu(sender_psid)
             break;
@@ -215,7 +216,9 @@ async function handlePostback(sender_psid, received_postback) {
         case 'SHOW_ROOMS':
             await chatbotService.handleShowDetailRooms(sender_psid)
             break
-
+        case 'HD':
+            await chatbotService.handleHD(sender_psid)
+            break;
         default:
             response = { "text": `Tôi không yêu cầu ${payload} của bạn` }
     }

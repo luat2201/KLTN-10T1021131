@@ -1067,6 +1067,51 @@ let handleShowDetailRooms = (sender_psid) => {
     })
 }
 
+let handleHD = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            //send text
+            let username = await getUserName(sender_psid)
+            let response1 = { "text": `Xin chào ${username}, mình là chatbbot của nhà hàng Luffy. Mọi thông tin và cách sử dụng chatbot bạn hãy xem video bên dưới❤️❤️❤️` }
+
+            //send a button templates: video, button
+            let response2 = getBotMediaTemplate(sender_psid)
+
+            await callSendAPI(sender_psid, response1)
+            await callSendAPI(sender_psid, response2)
+
+            resolve('done')
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+let getBotMediaTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "media",
+                "elements": [
+                    {
+                        "media_type": "video",
+                        "url": "https://www.facebook.com/100092235139972/videos/1030041295070215",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Menu",
+                                "payload": "Main_menu",
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+    return response
+}
+
 module.exports = {
     handleGetStarted: handleGetStarted,
     handleSendMainMenu: handleSendMainMenu,
@@ -1082,4 +1127,5 @@ module.exports = {
     handleViewMon_TM: handleViewMon_TM,
     handleShowDetailRooms: handleShowDetailRooms,
     callSendAPI: callSendAPI,
+    handleHD: handleHD
 }
