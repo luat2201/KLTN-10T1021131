@@ -12,8 +12,9 @@ const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY
 
 let writeDataToGoogleSheet = async (data) => {
     let currentDate = new Date();
+    let currentVNDate = new Data().toLocaleString("vi-VN", { timeZone: 'Asia/Ho_Chi_Minh' })
     const format = "HH:mm DD/MM/YYYY"
-    let formatedDate = moment(currentDate).format(format)
+    let formatedDate = moment(currentDate).format(currentVNDate)
 
 
     // Initialize the sheet - doc ID is the long id in the sheets URL

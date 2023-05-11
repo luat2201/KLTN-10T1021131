@@ -71,7 +71,7 @@ function handleClickButtonReserveTable() {
                 // an error occurred
                 console.log("MessengerExtensions requestCloseBrowser", err);
 
-                callAjax();
+                callAjax(data);
                 $('#customerInfor').css("display: none")
                 $('#handleError').css("display: block")
                 $('#handleError').css("text-align: center")
@@ -83,7 +83,7 @@ function handleClickButtonReserveTable() {
 }
 
 
-function callAjax() {
+function callAjax(data) {
     $.ajax({
         url: `${window.location.origin}/reserve-table-ajax`,
         method: "POST",
