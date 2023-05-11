@@ -14,7 +14,11 @@ window.extAsyncInit = function () {
             handleClickButtonReserveTable();
         },
         function error(err) {
-            console.log('Lỗi đặt bàn', err);
+            console.log('Lỗi đặt bàn MessengerExtensions getContext', err);
+
+            //run fallback, get userID from URL
+            $("#psid").val(senderId);
+            handleClickButtonReserveTable()
         }
     );
 };
