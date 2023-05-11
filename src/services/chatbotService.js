@@ -174,7 +174,7 @@ let handleGetStarted = (sender_psid) => {
             let response1 = { "text": `Xin chào mừng ${username} đến với nhà hàng Luffy` }
             //send text message
             await callSendAPI(sender_psid, response1)
-            let response2 = getStartedTemplate()
+            let response2 = getStartedTemplate(sender_psid)
             //send generic template message
             await callSendAPI(sender_psid, response2)
 
@@ -187,7 +187,7 @@ let handleGetStarted = (sender_psid) => {
     })
 }
 
-let getStartedTemplate = () => {
+let getStartedTemplate = (senderID) => {
     let response = {
         "attachment": {
             "type": "template",
@@ -205,7 +205,7 @@ let getStartedTemplate = () => {
                         },
                         {
                             "type": "web_url",
-                            "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                            "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                             "title": "Đặt bàn",
                             "webview_height_ratio": "tall",
                             "messenger_extensions": true
@@ -227,7 +227,7 @@ let getStartedTemplate = () => {
 let handleSendMainMenu = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let response1 = getMainMenuTemplate()
+            let response1 = getMainMenuTemplate(sender_psid)
             await callSendAPI(sender_psid, response1)
             resolve('done');
         } catch (e) {
@@ -236,7 +236,7 @@ let handleSendMainMenu = (sender_psid) => {
     })
 }
 
-let getMainMenuTemplate = () => {
+let getMainMenuTemplate = (senderID) => {
     let response = {
         "attachment": {
             "type": "template",
@@ -267,7 +267,7 @@ let getMainMenuTemplate = () => {
                         "buttons": [
                             {
                                 "type": "web_url",
-                                "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                                "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                                 "title": "Đặt bàn",
                                 "webview_height_ratio": "tall",
                                 "messenger_extensions": true
@@ -296,7 +296,7 @@ let getMainMenuTemplate = () => {
 let handleSendLunchMenu = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let response1 = await getLunchMenuTemplate()
+            let response1 = await getLunchMenuTemplate(sender_psid)
             await callSendAPI(sender_psid, response1)
             resolve('done');
         } catch (e) {
@@ -306,7 +306,7 @@ let handleSendLunchMenu = (sender_psid) => {
 }
 
 
-let getLunchMenuTemplate = async () => {
+let getLunchMenuTemplate = async (senderID) => {
 
     let data = await db.Product.findAll({
         raw: true
@@ -343,7 +343,7 @@ let getLunchMenuTemplate = async () => {
             },
             {
                 "type": "web_url",
-                "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                 "title": "Đặt bàn",
                 "webview_height_ratio": "tall",
                 "messenger_extensions": true
@@ -370,7 +370,7 @@ let getLunchMenuTemplate = async () => {
 let handlleSendDinnerMenu = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let response1 = getDinnerMenuTemplate()
+            let response1 = getDinnerMenuTemplate(sender_psid)
             await callSendAPI(sender_psid, response1)
             resolve('done');
         } catch (e) {
@@ -379,7 +379,7 @@ let handlleSendDinnerMenu = (sender_psid) => {
     })
 }
 
-let getDinnerMenuTemplate = () => {
+let getDinnerMenuTemplate = (senderID) => {
     let response = {
         "attachment": {
             "type": "template",
@@ -479,6 +479,13 @@ let getDinnerMenuTemplate = () => {
                                 "type": "postback",
                                 "title": "Quay trở lại Menu chính",
                                 "payload": "BACK",
+                            },
+                            {
+                                "type": "web_url",
+                                "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
+                                "title": "Đặt bàn",
+                                "webview_height_ratio": "tall",
+                                "messenger_extensions": true
                             }
                         ],
                     }
@@ -551,6 +558,13 @@ let gethandleViewKV = (senderID) => {
                                     "type": "postback",
                                     "title": "Quay trở lại Menu chính",
                                     "payload": "BACK",
+                                },
+                                {
+                                    "type": "web_url",
+                                    "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
+                                    "title": "Đặt bàn",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
                                 }
                             ],
                         }
@@ -624,6 +638,13 @@ let gethandleViewTBM = (senderID) => {
                                     "type": "postback",
                                     "title": "Quay trở lại Menu chính",
                                     "payload": "BACK",
+                                },
+                                {
+                                    "type": "web_url",
+                                    "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
+                                    "title": "Đặt bàn",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
                                 }
                             ],
                         }
@@ -691,6 +712,13 @@ let gethandleViewTHTBN = (senderID) => {
                                     "type": "postback",
                                     "title": "Quay trở lại Menu chính",
                                     "payload": "BACK",
+                                },
+                                {
+                                    "type": "web_url",
+                                    "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
+                                    "title": "Đặt bàn",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
                                 }
                             ],
                         }
@@ -758,6 +786,13 @@ let gethandleViewCANH = (senderID) => {
                                     "type": "postback",
                                     "title": "Quay trở lại Menu chính",
                                     "payload": "BACK",
+                                },
+                                {
+                                    "type": "web_url",
+                                    "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
+                                    "title": "Đặt bàn",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
                                 }
                             ],
                         }
@@ -820,6 +855,13 @@ let gethandleViewCOM = (senderID) => {
                                     "type": "postback",
                                     "title": "Quay trở lại Menu chính",
                                     "payload": "BACK",
+                                },
+                                {
+                                    "type": "web_url",
+                                    "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
+                                    "title": "Đặt bàn",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
                                 }
                             ],
                         }
@@ -877,6 +919,13 @@ let gethandleViewLAU = (senderID) => {
                                     "type": "postback",
                                     "title": "Quay trở lại Menu chính",
                                     "payload": "BACK",
+                                },
+                                {
+                                    "type": "web_url",
+                                    "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
+                                    "title": "Đặt bàn",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
                                 }
                             ],
                         }
@@ -954,6 +1003,13 @@ let gethandleViewMon_TM = (senderID) => {
                                     "type": "postback",
                                     "title": "Quay trở lại Menu chính",
                                     "payload": "BACK",
+                                },
+                                {
+                                    "type": "web_url",
+                                    "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
+                                    "title": "Đặt bàn",
+                                    "webview_height_ratio": "tall",
+                                    "messenger_extensions": true
                                 }
                             ],
                         }
@@ -977,7 +1033,7 @@ let getImageRoomsTemplates = () => {
     return response
 }
 
-let getButtonRoomsTemplates = () => {
+let getButtonRoomsTemplates = (senderID) => {
     let response = {
         "attachment": {
             "type": "template",
@@ -992,7 +1048,7 @@ let getButtonRoomsTemplates = () => {
                     },
                     {
                         "type": "web_url",
-                        "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                        "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                         "title": "Đặt bàn",
                         "webview_height_ratio": "tall",
                         "messenger_extensions": true
