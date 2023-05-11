@@ -208,7 +208,8 @@ let getStartedTemplate = (senderID) => {
                             "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                             "title": "Đặt bàn",
                             "webview_height_ratio": "tall",
-                            "messenger_extensions": true
+                            "messenger_extensions": true,
+                            //"fallback_url": `${process.env.URL_WEB_VIEW_ORDER}`
                         },
                         {
                             "type": "postback",
@@ -270,7 +271,8 @@ let getMainMenuTemplate = (senderID) => {
                                 "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                                 "title": "Đặt bàn",
                                 "webview_height_ratio": "tall",
-                                "messenger_extensions": true
+                                "messenger_extensions": true,
+                                //"fallback_url": `${process.env.URL_WEB_VIEW_ORDER}`
                             }
                         ],
                     },
@@ -346,7 +348,8 @@ let getLunchMenuTemplate = async (senderID) => {
                 "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                 "title": "Đặt bàn",
                 "webview_height_ratio": "tall",
-                "messenger_extensions": true
+                "messenger_extensions": true,
+                //"fallback_url": `${process.env.URL_WEB_VIEW_ORDER}`
             }
         ],
     })
@@ -485,7 +488,8 @@ let getDinnerMenuTemplate = (senderID) => {
                                 "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                                 "title": "Đặt bàn",
                                 "webview_height_ratio": "tall",
-                                "messenger_extensions": true
+                                "messenger_extensions": true,
+                                //"fallback_url": `${process.env.URL_WEB_VIEW_ORDER}`
                             }
                         ],
                     }
@@ -564,7 +568,8 @@ let gethandleViewKV = (senderID) => {
                                     "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                                     "title": "Đặt bàn",
                                     "webview_height_ratio": "tall",
-                                    "messenger_extensions": true
+                                    "messenger_extensions": true,
+                                    //"fallback_url": `${process.env.URL_WEB_VIEW_ORDER}`
                                 }
                             ],
                         }
@@ -644,7 +649,8 @@ let gethandleViewTBM = (senderID) => {
                                     "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                                     "title": "Đặt bàn",
                                     "webview_height_ratio": "tall",
-                                    "messenger_extensions": true
+                                    "messenger_extensions": true,
+                                    //"fallback_url": `${process.env.URL_WEB_VIEW_ORDER}`
                                 }
                             ],
                         }
@@ -718,7 +724,8 @@ let gethandleViewTHTBN = (senderID) => {
                                     "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                                     "title": "Đặt bàn",
                                     "webview_height_ratio": "tall",
-                                    "messenger_extensions": true
+                                    "messenger_extensions": true,
+                                    //"fallback_url": `${process.env.URL_WEB_VIEW_ORDER}`
                                 }
                             ],
                         }
@@ -792,7 +799,8 @@ let gethandleViewCANH = (senderID) => {
                                     "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                                     "title": "Đặt bàn",
                                     "webview_height_ratio": "tall",
-                                    "messenger_extensions": true
+                                    "messenger_extensions": true,
+                                    //"fallback_url": `${process.env.URL_WEB_VIEW_ORDER}`
                                 }
                             ],
                         }
@@ -861,7 +869,8 @@ let gethandleViewCOM = (senderID) => {
                                     "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                                     "title": "Đặt bàn",
                                     "webview_height_ratio": "tall",
-                                    "messenger_extensions": true
+                                    "messenger_extensions": true,
+                                    //"fallback_url": `${process.env.URL_WEB_VIEW_ORDER}`
                                 }
                             ],
                         }
@@ -925,7 +934,8 @@ let gethandleViewLAU = (senderID) => {
                                     "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                                     "title": "Đặt bàn",
                                     "webview_height_ratio": "tall",
-                                    "messenger_extensions": true
+                                    "messenger_extensions": true,
+                                    //"fallback_url": `${process.env.URL_WEB_VIEW_ORDER}`
                                 }
                             ],
                         }
@@ -1009,7 +1019,8 @@ let gethandleViewMon_TM = (senderID) => {
                                     "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                                     "title": "Đặt bàn",
                                     "webview_height_ratio": "tall",
-                                    "messenger_extensions": true
+                                    "messenger_extensions": true,
+                                    //"fallback_url": `${process.env.URL_WEB_VIEW_ORDER}`
                                 }
                             ],
                         }
@@ -1051,7 +1062,8 @@ let getButtonRoomsTemplates = (senderID) => {
                         "url": `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                         "title": "Đặt bàn",
                         "webview_height_ratio": "tall",
-                        "messenger_extensions": true
+                        "messenger_extensions": true,
+                        //"fallback_url": `${process.env.URL_WEB_VIEW_ORDER}`
                     }
                 ]
             }

@@ -15,6 +15,10 @@ window.extAsyncInit = function () {
         },
         function error(err) {
             console.log('Lỗi đặt bàn MessengerExtensions getContext', err);
+
+            //run fallback, get userID from URL
+            $("#psid").val(senderId);
+            handleClickButtonReserveTable()
         }
     );
 };
@@ -62,23 +66,33 @@ function handleClickButtonReserveTable() {
             //close webview
             MessengerExtensions.requestCloseBrowser(function success() {
                 // webview closed
+                callAjax()
             }, function error(err) {
                 // an error occurred
-                console.log(err);
+                console.log("MessengerExtensions requestCloseBrowser", err);
+
+                callAjax();
+                $('#customerInfor').css("display: none")
+                $('#handleError').css("display: block")
+                $('#handleError').css("text-align: center")
+
             });
 
-            //send data to node.js server
-            $.ajax({
-                url: `${window.location.origin}/reserve-table-ajax`,
-                method: "POST",
-                data: data,
-                success: function (data) {
-                    console.log(data);
-                },
-                error: function (error) {
-                    console.log(error);
-                }
-            })
         }
     });
+}
+
+
+function callAjax() {
+    $.ajax({
+        url: `${window.location.origin}/reserve-table-ajax`,
+        method: "POST",
+        data: data,
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    })
 }

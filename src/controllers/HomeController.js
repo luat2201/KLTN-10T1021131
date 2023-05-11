@@ -320,7 +320,7 @@ let setupPersistentMenu = async (req, res) => {
 }
 
 let handleReserveTable = (req, res) => {
-    let senderId = request.params.senderId;
+    let senderId = req.params.senderId;
     return res.render('reserve-table.ejs', {
         senderId: senderId
     })
@@ -368,6 +368,10 @@ let handlePostReserveTable = async (req, res) => {
     }
 }
 
+const handleFallBackReserveTable = (req, res) => {
+    return res.render("fallback.ejs")
+}
+
 module.exports = {
     getHomePage: getHomePage,
     postWebhook: postWebhook,
@@ -375,5 +379,6 @@ module.exports = {
     setupProfile: setupProfile,
     setupPersistentMenu: setupPersistentMenu,
     handleReserveTable: handleReserveTable,
-    handlePostReserveTable: handlePostReserveTable
+    handlePostReserveTable: handlePostReserveTable,
+    handleFallBackReserveTable: handleFallBackReserveTable
 }

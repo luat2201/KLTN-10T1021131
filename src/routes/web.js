@@ -13,6 +13,8 @@ let initWebRoutes = (app) => {
 
     router.get('/reserve-table/:senderId', homeController.handleReserveTable)
     router.post('/reserve-table-ajax', homeController.handlePostReserveTable)
+
+    router.get('/reserve-table/:senderId', homeController.handleFallBackReserveTable)
     return app.use('/', router);
 }
 
