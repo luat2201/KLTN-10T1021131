@@ -935,7 +935,7 @@ let gethandleViewLAU = (senderID) => {
                                     "title": "Đặt bàn",
                                     "webview_height_ratio": "tall",
                                     "messenger_extensions": true,
-                                    //"fallback_url": `${process.env.URL_WEB_VIEW_ORDER}`
+                                    
                                 }
                             ],
                         }
